@@ -1,6 +1,5 @@
-package com.example.whatsapp;
+package com.shivamsinghproject.chattingappbyshivam;
 
-import android.*;
 import android.Manifest;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -8,7 +7,6 @@ import android.content.ContextWrapper;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.pm.PackageManager;
-import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
@@ -28,9 +26,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.AbsListView;
 import android.widget.EditText;
-import android.widget.GridView;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -61,8 +57,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Random;
-import java.util.concurrent.ThreadLocalRandom;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -94,7 +88,7 @@ public class MessageActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_message);
+        setContentView(com.shivamsinghproject.chattingappbyshivam.R.layout.activity_message);
 
         Intent intent = getIntent();
         name = (String) intent.getSerializableExtra("name");
@@ -102,12 +96,12 @@ public class MessageActivity extends AppCompatActivity {
         if(name == null) {
             name = phone;
         }
-        CircleImageView imageView = (CircleImageView) findViewById(R.id.imageView);
+        CircleImageView imageView = (CircleImageView) findViewById(com.shivamsinghproject.chattingappbyshivam.R.id.imageView);
         ContextWrapper wrapper = new ContextWrapper(getApplicationContext());
         File file = wrapper.getDir("profilePictures",MODE_PRIVATE);
         file = new File(file, phone + ".jpg");
         if(file.exists()) {
-            ((CircleImageView) findViewById(R.id.friend_image)).setImageURI(Uri.parse(file.getAbsolutePath()));
+            ((CircleImageView) findViewById(com.shivamsinghproject.chattingappbyshivam.R.id.friend_image)).setImageURI(Uri.parse(file.getAbsolutePath()));
         }
 
         setToolbar();
@@ -117,12 +111,12 @@ public class MessageActivity extends AppCompatActivity {
         reference2 = mDatabase.child(phone + " " + FirebaseAuth.getInstance().getCurrentUser().getPhoneNumber());
         storageRef = FirebaseStorage.getInstance().getReference(FirebaseAuth.getInstance().getCurrentUser().getPhoneNumber() + " " + phone);
 
-        messageList = (ListView) findViewById(R.id.message_list);
+        messageList = (ListView) findViewById(com.shivamsinghproject.chattingappbyshivam.R.id.message_list);
         showMessages();
 
-        attachmentGrid = (LinearLayout) findViewById(R.id.attachment_grid);
+        attachmentGrid = (LinearLayout) findViewById(com.shivamsinghproject.chattingappbyshivam.R.id.attachment_grid);
 
-        messageTextView = (EditText) findViewById(R.id.message_text);
+        messageTextView = (EditText) findViewById(com.shivamsinghproject.chattingappbyshivam.R.id.message_text);
         messageTextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -130,7 +124,7 @@ public class MessageActivity extends AppCompatActivity {
             }
         });
 
-        EditText editText = (EditText) findViewById(R.id.search_bar);
+        EditText editText = (EditText) findViewById(com.shivamsinghproject.chattingappbyshivam.R.id.search_bar);
         editText.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
@@ -168,14 +162,14 @@ public class MessageActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.message_menu, menu);
+        inflater.inflate(com.shivamsinghproject.chattingappbyshivam.R.menu.message_menu, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
-        if(id == R.id.message_clearChat) {
+        if(id == com.shivamsinghproject.chattingappbyshivam.R.id.message_clearChat) {
             DBHelper helper = new DBHelper(this);
             SQLiteDatabase db = helper.getWritableDatabase();
             db.execSQL("DELETE FROM Message WHERE Friend='" + phone + "'");
@@ -206,18 +200,18 @@ public class MessageActivity extends AppCompatActivity {
                 }
             }
         }
-        else if(id == R.id.message_search) {
-            findViewById(R.id.tool_bar_parent).setBackground(getResources().getDrawable(R.color.white));
-            findViewById(R.id.tool_bar_child).setVisibility(View.GONE);
-            findViewById(R.id.search_bar).setVisibility(View.VISIBLE);
+        else if(id == com.shivamsinghproject.chattingappbyshivam.R.id.message_search) {
+            findViewById(com.shivamsinghproject.chattingappbyshivam.R.id.tool_bar_parent).setBackground(getResources().getDrawable(com.shivamsinghproject.chattingappbyshivam.R.color.white));
+            findViewById(com.shivamsinghproject.chattingappbyshivam.R.id.tool_bar_child).setVisibility(View.GONE);
+            findViewById(com.shivamsinghproject.chattingappbyshivam.R.id.search_bar).setVisibility(View.VISIBLE);
         }
         return super.onOptionsItemSelected(item);
     }
 
     private void resetSearch() {
-        findViewById(R.id.tool_bar_parent).setBackground(getResources().getDrawable(R.color.teal));
-        findViewById(R.id.tool_bar_child).setVisibility(View.VISIBLE);
-        EditText editText = (EditText) findViewById(R.id.search_bar);
+        findViewById(com.shivamsinghproject.chattingappbyshivam.R.id.tool_bar_parent).setBackground(getResources().getDrawable(com.shivamsinghproject.chattingappbyshivam.R.color.teal));
+        findViewById(com.shivamsinghproject.chattingappbyshivam.R.id.tool_bar_child).setVisibility(View.VISIBLE);
+        EditText editText = (EditText) findViewById(com.shivamsinghproject.chattingappbyshivam.R.id.search_bar);
         editText.setVisibility(View.GONE);
         editText.setText("");
         messageAdapter.getFilter().filter(null);
@@ -234,7 +228,7 @@ public class MessageActivity extends AppCompatActivity {
                 }
                 else if (requestCode == GALLERY) {
                     Uri imageUri = data.getData();
-                    ImageView imageView = (ImageView) findViewById(R.id.image_view);
+                    ImageView imageView = (ImageView) findViewById(com.shivamsinghproject.chattingappbyshivam.R.id.image_view);
                     imageView.setImageURI(imageUri);
                     Bitmap bitmap = ((BitmapDrawable)imageView.getDrawable()).getBitmap();
                     sendImage(bitmap);
@@ -334,11 +328,11 @@ public class MessageActivity extends AppCompatActivity {
     }
 
     private void setToolbar() {
-        Toolbar toolbar = (Toolbar) findViewById(R.id.tool_bar);
+        Toolbar toolbar = (Toolbar) findViewById(com.shivamsinghproject.chattingappbyshivam.R.id.tool_bar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
 
-        LinearLayout layout = (LinearLayout) findViewById(R.id.tool_bar_child);
+        LinearLayout layout = (LinearLayout) findViewById(com.shivamsinghproject.chattingappbyshivam.R.id.tool_bar_child);
         layout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -349,10 +343,10 @@ public class MessageActivity extends AppCompatActivity {
             }
         });
 
-        TextView textView = (TextView) findViewById(R.id.name);
+        TextView textView = (TextView) findViewById(com.shivamsinghproject.chattingappbyshivam.R.id.name);
         textView.setText(name);
 
-        ImageButton button = (ImageButton) findViewById(R.id.back_button);
+        ImageButton button = (ImageButton) findViewById(com.shivamsinghproject.chattingappbyshivam.R.id.back_button);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -363,7 +357,7 @@ public class MessageActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        if(findViewById(R.id.search_bar).getVisibility() != View.GONE)
+        if(findViewById(com.shivamsinghproject.chattingappbyshivam.R.id.search_bar).getVisibility() != View.GONE)
             resetSearch();
         else
             super.onBackPressed();

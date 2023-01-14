@@ -15,7 +15,8 @@
         android:textAlignment="center"
         android:layout_centerHorizontal="true"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="10dp"/>
+        android:layout_marginTop="10dp"
+        android:gravity="center_horizontal" />
 
     <TextView
         android:id="@+id/text"
@@ -25,7 +26,8 @@
         android:textSize="15dp"
         android:textAlignment="center"
         android:layout_alignTop="@+id/verify"
-        android:layout_marginTop="40dp"/>
+        android:layout_marginTop="40dp"
+        android:gravity="center_horizontal" />
 
     <Spinner
         android:id="@+id/country"
@@ -80,6 +82,7 @@
         android:textAlignment="center"
         android:layout_centerHorizontal="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="20dp"/>
+        android:layout_marginBottom="20dp"
+        android:gravity="center_horizontal" />
 
 </RelativeLayout>

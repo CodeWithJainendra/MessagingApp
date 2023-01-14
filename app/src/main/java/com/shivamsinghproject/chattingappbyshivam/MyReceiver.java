@@ -1,4 +1,4 @@
-package com.example.whatsapp;
+package com.shivamsinghproject.chattingappbyshivam;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;

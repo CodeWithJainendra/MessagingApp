@@ -1,4 +1,4 @@
-package com.example.whatsapp;
+package com.shivamsinghproject.chattingappbyshivam;
 
 import android.content.ContextWrapper;
 import android.content.DialogInterface;
@@ -24,8 +24,6 @@ import com.google.firebase.database.ValueEventListener;
 import java.io.File;
 
 import de.hdodenhof.circleimageview.CircleImageView;
-
-import static com.example.whatsapp.DBHelper.DATABASE_NAME;
 
 public class Settings extends AppCompatActivity {
     private File image;
@@ -162,7 +160,7 @@ public class Settings extends AppCompatActivity {
         cursor.close();
         FirebaseAuth.getInstance().signOut();
         try {
-            deleteDatabase(DATABASE_NAME);
+            deleteDatabase(DBHelper.DATABASE_NAME);
         }
         catch (Exception ex) {
             Toast.makeText(this, ex.getMessage(), Toast.LENGTH_SHORT).show();

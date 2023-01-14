@@ -1,4 +1,4 @@
-package com.example.whatsapp;
+package com.shivamsinghproject.chattingappbyshivam;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;

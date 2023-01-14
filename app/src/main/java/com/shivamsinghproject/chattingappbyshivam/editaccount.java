@@ -1,4 +1,4 @@
-package com.example.whatsapp;
+package com.shivamsinghproject.chattingappbyshivam;
 
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -14,7 +14,6 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.AbsListView;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -37,7 +36,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.OutputStream;
 
-import static com.example.whatsapp.MessageActivity.GALLERY;
+import static com.shivamsinghproject.chattingappbyshivam.MessageActivity.GALLERY;
 
 
 /**

@@ -1,11 +1,8 @@
-package com.example.whatsapp;
+package com.shivamsinghproject.chattingappbyshivam;
 
-import android.*;
 import android.Manifest;
-import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.support.annotation.NonNull;
@@ -13,8 +10,6 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.telephony.TelephonyManager;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -22,19 +17,12 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 
-import com.google.firebase.FirebaseException;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.PhoneAuthCredential;
-import com.google.firebase.auth.PhoneAuthProvider;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.storage.FirebaseStorage;
 
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Locale;
-import java.util.concurrent.TimeUnit;
-
-import static android.R.attr.phoneNumber;
 
 public class RegisterPhoneNumber extends AppCompatActivity {
 
@@ -45,7 +33,7 @@ public class RegisterPhoneNumber extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_register_phone_number);
+        setContentView(com.shivamsinghproject.chattingappbyshivam.R.layout.activity_register_phone_number);
 
         try {
             FirebaseDatabase.getInstance().setPersistenceEnabled(true);
@@ -84,18 +72,18 @@ public class RegisterPhoneNumber extends AppCompatActivity {
         ArrayList<String> countries= getCountryNames();
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, countries);
 
-        Spinner countrySpinner = (Spinner) findViewById(R.id.country);
+        Spinner countrySpinner = (Spinner) findViewById(com.shivamsinghproject.chattingappbyshivam.R.id.country);
         countrySpinner.setAdapter(adapter);
 
         countrySpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 String CountryID= locales[position];
-                String[] rl = getResources().getStringArray(R.array.CountryCodes);
+                String[] rl = getResources().getStringArray(com.shivamsinghproject.chattingappbyshivam.R.array.CountryCodes);
                 for(String x : rl){
                     String[] g = x.split(",");
                     if(g[1].trim().equals(CountryID.trim())){
-                        TextView textView = (TextView) findViewById(R.id.countryCode);
+                        TextView textView = (TextView) findViewById(com.shivamsinghproject.chattingappbyshivam.R.id.countryCode);
                         textView.setText("+" + g[0]);
                         return;
                     }
@@ -110,8 +98,8 @@ public class RegisterPhoneNumber extends AppCompatActivity {
     }
 
     public void nextButton(View view) {
-        TextView editText1 = (TextView) findViewById(R.id.countryCode);
-        EditText editText2 = (EditText) findViewById(R.id.phone);
+        TextView editText1 = (TextView) findViewById(com.shivamsinghproject.chattingappbyshivam.R.id.countryCode);
+        EditText editText2 = (EditText) findViewById(com.shivamsinghproject.chattingappbyshivam.R.id.phone);
 
         Intent intent = new Intent(this, VerifyPhoneNumberActivity.class);
         intent.putExtra("phone", editText1.getText().toString() + editText2.getText().toString());

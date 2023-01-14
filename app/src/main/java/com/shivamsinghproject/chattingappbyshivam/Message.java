@@ -1,8 +1,6 @@
-package com.example.whatsapp;
+package com.shivamsinghproject.chattingappbyshivam;
 
 import android.net.Uri;
-
-import java.util.Date;
 
 /**
  * Created by farha on 16-Nov-17.

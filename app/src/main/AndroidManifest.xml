@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.whatsapp">
+    package="com.shivamsinghproject.chattingappbyshivam">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
@@ -17,19 +17,19 @@
         android:largeHeap="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".MessageActivity"
+            android:name="com.shivamsinghproject.chattingappbyshivam.MessageActivity"
             android:theme="@style/AppTheme2"
             android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
-            android:name=".UserDetailsScreen"
-            android:parentActivityName=".MessageActivity"
+            android:name="com.shivamsinghproject.chattingappbyshivam.UserDetailsScreen"
+            android:parentActivityName="com.shivamsinghproject.chattingappbyshivam.MessageActivity"
             android:theme="@style/AppTheme2">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MessageActivity" />
+                android:value="com.shivamsinghproject.chattingappbyshivam.MessageActivity" />
         </activity>
         <activity
-            android:name=".RegisterPhoneNumber"
+            android:name="com.shivamsinghproject.chattingappbyshivam.RegisterPhoneNumber"
             android:theme="@style/AppTheme3"
             android:windowSoftInputMode="stateAlwaysHidden">
             <intent-filter>
@@ -39,31 +39,31 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".VerifyPhoneNumberActivity"
+            android:name="com.shivamsinghproject.chattingappbyshivam.VerifyPhoneNumberActivity"
             android:theme="@style/AppTheme3"
             android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
-            android:name=".ChatActivity"
+            android:name="com.shivamsinghproject.chattingappbyshivam.ChatActivity"
             android:label="@string/title_activity_chat"
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="stateAlwaysHidden" />
-        <activity android:name=".SetProfileData" />
+        <activity android:name="com.shivamsinghproject.chattingappbyshivam.SetProfileData" />
         <activity
-            android:name=".ShowImage"
+            android:name="com.shivamsinghproject.chattingappbyshivam.ShowImage"
             android:theme="@style/AppTheme2" />
-        <activity android:name=".Settings" />
-        <activity android:name=".editaccount" />
+        <activity android:name="com.shivamsinghproject.chattingappbyshivam.Settings" />
+        <activity android:name="com.shivamsinghproject.chattingappbyshivam.editaccount" />
 
-        <activity android:name=".ContactActivity"
+        <activity android:name="com.shivamsinghproject.chattingappbyshivam.ContactActivity"
             android:theme="@style/AppTheme2"
             android:windowSoftInputMode="stateAlwaysHidden"/>
 
         <service
-            android:name=".SyncMessagesService"
+            android:name="com.shivamsinghproject.chattingappbyshivam.SyncMessagesService"
             android:enabled="true"
             android:exported="true" />
 
-        <receiver android:name=".MyReceiver" android:enabled="true" android:exported="false">
+        <receiver android:name="com.shivamsinghproject.chattingappbyshivam.MyReceiver" android:enabled="true" android:exported="false">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED"/>
             </intent-filter>
