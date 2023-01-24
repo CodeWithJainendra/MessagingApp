@@ -11,17 +11,6 @@ This app is like WhatsApp. This is an **android app** that allows its users to s
 * Firebase Invite
 
 
-## Interfaces
-
-### Chats/Conacts and Settings
-<p align="middle">
-  <img src="../master/Screenshots/s1.png"/>
-</p>
- 
-### Messages
-<p align="middle">
-  <img src="../master/Screenshots/s2.png"/>
-</p>
 
 
 ## Functionalities
